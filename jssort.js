@@ -1,7 +1,7 @@
 ; (function () {
 	'use strict';
 
-	function (factory) {
+	(function(factory) {
 		// Support three module loading scenarios
 		if (typeof define === 'function' && define['amd']) {
 			// [1] AMD anonymous module
@@ -11,9 +11,9 @@
 			factory(module['exports'] || exports);  // module.exports is for Node.js
 		} else {
 			// [3] No module loader (plain <script> tag) - put directly in global namespace
-			factory(window['jsSort'] = {});
+			factory(window['jsSort'] = {}, _, ko);
 		}
-	} (function (exports, _, ko) {
+	}) (function (exports, _, ko) {
 		'use strict';
 
 		function sortByMultiple(sequence, keys) {
