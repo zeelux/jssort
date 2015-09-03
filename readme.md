@@ -1,6 +1,19 @@
-# JSSort
+# jsSort
 
-JSSort is a generic sort method that can sort an array of objects by multiple properties.
+jsSort is a generic sort method that can sort an array of objects by multiple properties. 
+
+## Overview
+
+The public API for jsSort boils down to a single method named _sortByMultiple_. This method takes two parameters, 
+each of which are arrays. 
+
+- _sequence_: Array to sort. Must be an array of objects.
+- _keys_: Array of strings that represent the property names to sort by. If an entry in this array contains a 
+  _._ it will assume that this indicates a subproperty. jsSort will navigate down the object graph to find the
+  property. In this version jsSort assumes all properties will be defined, not null objects. 
+  
+jsSort can sort by date, number and string values. In the current version it can only sort in descending order. 
+I plan to add support for setting the sort order of each property in a future version.
 
 ## Usage
 
@@ -40,3 +53,10 @@ First include the script in the page using a script tag or using import using co
   //];
 
 ```
+
+##Dependencies
+- KnockoutJS
+  Knockout is required only because jsSort supports unwrapping observable properties. This dependency will 
+  be removed in a future release.
+- UnderscoreJS (or lodash)
+  The dependency on underscore may be removed in a future release. 
