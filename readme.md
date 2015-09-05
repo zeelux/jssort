@@ -1,4 +1,4 @@
-# jsSort
+# jsSort v0.0.5
 
 jsSort is a generic sort method that can sort an array of objects by multiple properties. 
 
@@ -57,3 +57,19 @@ First include the script in the page using a script tag or using import using co
 ## Dependencies
 - UnderscoreJS (or lodash)
   The dependency on underscore may be removed in a future release. 
+  
+## Contributing
+Contributions are welcome but please follow these guidelines.
+1. Set your editor to insert spaces instead of tabs.
+2. Make sure you match the line endings.
+3. Please don't introduce new external dependencies.
+4. If you've added a new feature please add a sample to demonstrate the feature.
+
+## Road Map
+I would like to add the following, but I don't have a true timeline for these yet.
+- Test suite. I plan to use Jasmine BDD testing framework.
+- Grunt/Gulp script to build minified version for an official build.
+- Samples using jsSort in NodeJS/CommonJS, AMD via RequireJS.
+- Samples demonstrating dotted property navigation.
+- Introduce a way to determine sort order for each property being sorted.
+- Remove dependency on Underscore/Lodash
