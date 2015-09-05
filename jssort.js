@@ -54,13 +54,20 @@
                 value, part;
 
             part = keyParts.shift();
-            value = ko.unwrap(item[part]);
+            value = unwrap(item[part]);
 
             while (part = keyParts.shift()) {
-                value = ko.unwrap(value[part]);
+                value = unwrap(value[part]);
             }
 
             return value;
+        }
+        
+        function unwrap(val) {
+            if (_.isFunction(val)) {
+                return val();
+            }
+            return val;
         }
 	
         // export sort function

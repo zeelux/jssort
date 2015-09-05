@@ -54,9 +54,6 @@ First include the script in the page using a script tag or using import using co
 
 ```
 
-##Dependencies
-- KnockoutJS
-  Knockout is required only because jsSort supports unwrapping observable properties. This dependency will 
-  be removed in a future release.
+## Dependencies
 - UnderscoreJS (or lodash)
   The dependency on underscore may be removed in a future release. 
