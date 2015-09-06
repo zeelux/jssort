@@ -11,6 +11,7 @@
             factory(module['exports'] || exports);  // module.exports is for Node.js
         } else {
             // [3] No module loader (plain <script> tag) - put directly in global namespace
+            // underscore/lodash must be global as well.
             factory(window['jsSort'] = {}, _);
         }
     })(function (exports, _) {

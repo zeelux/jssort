@@ -4,26 +4,7 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
     <script type="text/javascript" src="../jssort.js"></script>
 
-    <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-        }
-        table {
-            font-size: 12px;            
-            border: 1px solid darkgray;
-            margin-bottom: 30px;
-            width: 100%;
-        }
-        tr {
-            margin: 0;
-            padding: 5px;
-            border: 1px solid darkgray;
-        }
-        td {
-            margin: 0;
-            padding: 5px;
-        }
-    </style>
+    <link href="./sample.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <h1>jsSort sample</h1>
@@ -67,27 +48,6 @@
         </tbody>
     </table>
 
-    <script>
-        var viewModel = {
-            
-            original: [
-                { id: 1, type: 'deposit',   amount: ko.observable(1230.45), transactionDate: new Date('1/1/2010') },
-                { id: 3, type: 'withdrawl', amount: ko.observable(20.00), transactionDate: new Date('1/1/2011') },
-                { id: 2, type: 'withdrawl', amount: ko.observable(40.00), transactionDate: new Date('1/1/2011') },
-                { id: 4, type: 'withdrawl', amount: ko.observable(12.63), transactionDate: new Date('1/1/2011') },
-                { id: 5, type: 'deposit',   amount: ko.observable(400.00), transactionDate: new Date('1/1/2011') },
-                { id: 6, type: 'withdrawl', amount: ko.observable(82.21), transactionDate: new Date('1/1/2011') },
-                { id: 7, type: 'withdrawl', amount: ko.observable(6.48), transactionDate: new Date('1/1/2011') },
-                { id: 8, type: 'withdrawl', amount: ko.observable(9.00), transactionDate: new Date('1/1/2011') },
-                { id: 9, type: 'withdrawl', amount: ko.observable(1.25), transactionDate: new Date('1/1/2011') },
-                { id: 10, type: 'check',    amount: ko.observable(523.00), transactionDate: new Date('1/1/2013') }
-            ],
-            sorted: []
-        }
-        
-        viewModel.sorted = jsSort.sortByMultiple(viewModel.original, ['transactionDate', 'type', 'amount'])
-        
-        ko.applyBindings(viewModel);
-    </script>
+    <script src="./sample.js"></script>
 </body>
 </html>
