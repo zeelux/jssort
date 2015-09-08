@@ -31,6 +31,10 @@
                 currentKey,
                 sortDesc;
                 
+            if (!_.isArray(keys)) {
+                keys = [keys];
+            }
+                
             for (var i = 0; i < keys.length; ++i) {
                 currentKey = keys[i];
                 sortDesc = shouldSortDescending(currentKey);
