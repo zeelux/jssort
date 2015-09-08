@@ -12,8 +12,9 @@ each of which are arrays.
   "." it will assume that this indicates a subproperty. jsSort will navigate down the object graph to find the
   property. In this version jsSort assumes all properties will be defined, not null objects. 
   
-jsSort can sort by date, number and string values. In the current version it can only sort in descending order. 
-I plan to add support for setting the sort order of each property in a future version.
+jsSort can sort by date, number and string values. The sort order of each property can be set by appending either 
+"[ASC]", or "[DESC]" to the begining of the property string. If no sort order is specified then it will default to 
+ascending sort.
 
 ## Usage
 
@@ -37,18 +38,18 @@ First include the script in the page using a script tag or using import using co
     { id: 10, type: 'check',     amount: 523.00,  transactionDate: new Date('1/1/2013') }
   ];
   
-  var sorted = jsSort.sortByMultiple(original, ['transactionDate', 'type', 'amount']);
+  var sorted = jsSort.sortByMultiple(original, ['transactionDate', 'type', '[DESC]amount']);
   
   // sorted will be [
   //  { id: 1,  type: 'deposit',   amount:1230.45, transactionDate: '2010-01-01' },
   //  { id: 5,  type: 'deposit',   amount:400.00,  transactionDate: '2011-01-01' },
-  //  { id: 9,  type: 'withdrawl', amount:1.25,    transactionDate: '2011-01-01' },
-  //  { id: 7,  type: 'withdrawl', amount:6.48,    transactionDate: '2011-01-01' },
-  //  { id: 8,  type: 'withdrawl', amount:9.00,    transactionDate: '2011-01-01' },
-  //  { id: 4,  type: 'withdrawl', amount:12.63,   transactionDate: '2011-01-01' },
-  //  { id: 3,  type: 'withdrawl', amount:20.00,   transactionDate: '2011-01-01' },
-  //  { id: 2,  type: 'withdrawl', amount:40.00,   transactionDate: '2011-01-01' },
   //  { id: 6,  type: 'withdrawl', amount:82.21,   transactionDate: '2011-01-01' },
+  //  { id: 2,  type: 'withdrawl', amount:40.00,   transactionDate: '2011-01-01' },
+  //  { id: 3,  type: 'withdrawl', amount:20.00,   transactionDate: '2011-01-01' },
+  //  { id: 4,  type: 'withdrawl', amount:12.63,   transactionDate: '2011-01-01' },
+  //  { id: 8,  type: 'withdrawl', amount:9.00,    transactionDate: '2011-01-01' },
+  //  { id: 7,  type: 'withdrawl', amount:6.48,    transactionDate: '2011-01-01' },
+  //  { id: 9,  type: 'withdrawl', amount:1.25,    transactionDate: '2011-01-01' }, 
   //  { id: 10, type: 'check',     amount:523.00,  transactionDate: '2013-01-01' }
   //];
 
@@ -71,5 +72,4 @@ I would like to add the following, but I don't have a true timeline for these ye
 - Grunt/Gulp script to build minified version for an official build.
 - Samples using jsSort in NodeJS/CommonJS, AMD via RequireJS.
 - Samples demonstrating dotted property navigation.
-- Introduce a way to determine sort order for each property being sorted.
 - Remove dependency on Underscore/Lodash

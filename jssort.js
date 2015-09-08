@@ -16,23 +16,54 @@
         }
     })(function (exports, _) {
         'use strict';
+        
+        var SORT_DESCENDING = "[DESC]",
+            SORT_ASCENDING = "[ASC]";
 
         function sortByMultiple(sequence, keys) {
             var copy = _.clone(sequence);
-            copy.sort(function (x, y) {
-                var comparison = 0;
-                for (var i = 0; i < keys.length; ++i) {
-                    comparison = compareBy(x, y, keys[i]);
-                    if (comparison !== 0) {
-                        return comparison;
-                    }
-                }
-                return comparison;
-            });
+            copy.sort(sortFunc.bind(null, keys));
             return copy;
         }
+        
+        function sortFunc(keys, x, y) {
+            var comparison = 0,
+                currentKey,
+                sortDesc;
+                
+            for (var i = 0; i < keys.length; ++i) {
+                currentKey = keys[i];
+                sortDesc = shouldSortDescending(currentKey);
+                currentKey = stripSortOrderFromKey(currentKey);
+                
+                comparison = compareBy(x, y, currentKey, sortDesc);
+                if (comparison !== 0) {
+                    return comparison;
+                }
+            }
+            return comparison;
+        }
+        
+        function shouldSortDescending(key) {
+            var upperKey = key.toLocaleUpperCase();
+            
+            if (upperKey.indexOf(SORT_DESCENDING) === 0) {
+                return true;
+            } else if (upperKey.indexOf(SORT_ASCENDING) === 0) {
+                return false;
+            }
+            
+            return false;
+        }
+        
+        function stripSortOrderFromKey(key) {
+            key = key.replace(SORT_ASCENDING, '');
+            key = key.replace(SORT_DESCENDING, '');
+            
+            return key;
+        }
 
-        function compareBy(x, y, key) {
+        function compareBy(x, y, key, sortDesc) {
             var xKey = getKeyValue(x, key),
                 yKey = getKeyValue(y, key);
 
@@ -47,7 +78,12 @@
             if (xKey === yKey) {
                 return 0;
             }
-            return xKey > yKey ? 1 : -1;
+            
+            if (sortDesc === false) {
+                return xKey > yKey ? 1 : -1;
+            } 
+            
+            return xKey > yKey ? -1 : 1;
         }
 
         function getKeyValue(item, key) {

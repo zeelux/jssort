@@ -15,6 +15,6 @@ var viewModel = {
     sorted: []
 }
 
-viewModel.sorted = jsSort.sortByMultiple(viewModel.original, ['transactionDate', 'type', 'amount'])
+viewModel.sorted = jsSort.sortByMultiple(viewModel.original, ['transactionDate', 'type', '[DESC]amount'])
 
 ko.applyBindings(viewModel);
