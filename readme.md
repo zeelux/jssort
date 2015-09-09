@@ -68,7 +68,6 @@ Contributions are welcome but please follow these guidelines.
 
 ## Road Map
 I would like to add the following, but I don't have a true timeline for these yet.
-- Test suite. I plan to use Jasmine BDD testing framework.
 - Grunt/Gulp script to build minified version for an official build.
 - Samples using jsSort in NodeJS/CommonJS, AMD via RequireJS.
 - Samples demonstrating dotted property navigation.
